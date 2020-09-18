@@ -6,7 +6,7 @@ namespace Homework6
 {
     class Game
     {
-        public User Start()
+        public void Start()
         {
             Dialog dialog = new Dialog();
             dialog.Start();
@@ -18,7 +18,7 @@ namespace Homework6
             Score score = new Score(0);
             user.UserScore(score);
 
-            return user;
+            
         }
         public void QuestionCicle(Score score, User user, Dialog dialog, Question[] QuestionList)
         {
