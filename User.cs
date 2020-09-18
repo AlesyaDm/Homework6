@@ -8,7 +8,11 @@ namespace Homework6
     {
         public string UserName;
         public int InputNumber;
-
+        
+        public void UserScore(Score score)
+        {
+            Console.WriteLine("Текущий счет: " + score.TotalScore + " BYN");
+        }
         public string UserInputName(string text)
         {
             Console.WriteLine(text);

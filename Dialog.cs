@@ -25,5 +25,6 @@ namespace Homework6
             Console.WriteLine("Введите +, если хотите продолжить игру.");
             Console.WriteLine("Введите -, если хотите забрать выигрыш и завершить игру.");
         }
+        
     }
 }

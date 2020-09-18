@@ -97,64 +97,14 @@ namespace Homework6
             QuestionList[9] = question10;
             QuestionList[10] = question11;
 
-            Dialog dialog = new Dialog();
-            dialog.Start();
-            
-            User user = new User();
-            user.UserName = user.UserInputName("Введите свое имя: ");
-            dialog.Rules(user);
-
+            Game game = new Game();
             Score score = new Score(0);
-            score.UserScore(score.TotalScore);
-            score.MaxScore = 102400;
-                        
-            int i = 0;
-                                     
-                for (score.TotalScore = 50; i < QuestionList.Length; i++)
-                {
-                QuestionList[i].ShowQuestion();
-                Console.WriteLine("");
-                Console.WriteLine("Варианты ответа:");
-                foreach (Answer value in QuestionList[i].Answers)
-                {
-                    value.ShowAnswers();
-                }
-                user.InputNumber = user.UserInputNumber("Введите номер правильного ответа:");
-                    Answer UserChoose = QuestionList[i].Answers[user.InputNumber - 1];
-                    UserChoose.Choose();
-                if (UserChoose is CorrectAnswer)
-                {
-                   
-                    score.TotalScore = score.TotalScore * 2;
-                    if (score.TotalScore == score.MaxScore)
-                    {
-                        Console.WriteLine("Поздравляем! Вы ответили на все вопросы и выиграли главный приз: 100000 BYN!");
-                        break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Ваш выигрыш: 0 BYN.");
-                    break;
-                }
-                    score.UserScore(score.TotalScore);
-                    dialog.AskAboutContinue();
-                    string InputSign = user.UserInputSign();
-                    if (InputSign == "+")
-                    {
-                       
-                    }
-                    if (InputSign == "-")
-                    {
-                    Console.WriteLine("Ваш выигрыш: " + score.TotalScore + " BYN");
-                    break;
-                    
-                    }
-                
-              
-                }
+            User user = new User();
+            Dialog dialog = new Dialog();
 
-                dialog.Finish();
+            game.Start();
+            game.QuestionCicle(score, user, dialog, QuestionList);
+            game.Finish();
         }
                 
     }

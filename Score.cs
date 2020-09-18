@@ -10,9 +10,6 @@ namespace Homework6
         { this.TotalScore = totalscore; }
 
         public int TotalScore;
-        public int MaxScore;
-        public void UserScore(int TotalScore)
-        { Console.WriteLine("Текущий счет: " + TotalScore + " BYN"); }
-
-    }
+        
+     }
 }
