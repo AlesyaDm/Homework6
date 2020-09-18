@@ -97,12 +97,12 @@ namespace Homework6
             QuestionList[9] = question10;
             QuestionList[10] = question11;
 
-            Game game = new Game();
-            game.Start();
+            Dialog dialog = new Dialog();
+            dialog.Start();
             
             User user = new User();
             user.UserName = user.UserInputName("Введите свое имя: ");
-            game.Rules(user);
+            dialog.Rules(user);
 
             Score score = new Score(0);
             score.UserScore(score.TotalScore);
@@ -138,7 +138,7 @@ namespace Homework6
                     break;
                 }
                     score.UserScore(score.TotalScore);
-                    game.AskAboutContinue();
+                    dialog.AskAboutContinue();
                     string InputSign = user.UserInputSign();
                     if (InputSign == "+")
                     {
@@ -154,8 +154,7 @@ namespace Homework6
               
                 }
 
-            Console.WriteLine("Спасибо за участие!");
-            Console.WriteLine("Игра завершена.");
+                dialog.Finish();
         }
                 
     }
