@@ -100,11 +100,10 @@ namespace Homework6
             Game game = new Game();
             Score score = new Score(0);
             User user = new User();
-            Dialog dialog = new Dialog();
-
+                      
             game.Start();
-            game.QuestionCicle(score, user, dialog, QuestionList);
-            game.Finish();
+            game.QuestionCicle(score, user, QuestionList);
+            Game.Finish();
         }
                 
     }

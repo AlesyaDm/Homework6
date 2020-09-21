@@ -11,7 +11,7 @@ namespace Homework6
         
         public void UserScore(Score score)
         {
-            Console.WriteLine("Текущий счет: " + score.TotalScore + " BYN");
+           Console.WriteLine("Текущий счет: " + score.TotalScore + " BYN");
         }
         public string UserInputName(string text)
         {

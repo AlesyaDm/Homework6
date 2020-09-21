@@ -6,21 +6,21 @@ namespace Homework6
 {
     class Game
     {
+                
         public void Start()
         {
-            Dialog dialog = new Dialog();
-            dialog.Start();
+            Dialog.Start();
 
             User user = new User();
             user.UserName = user.UserInputName("Введите свое имя: ");
-            dialog.Rules(user);
+            Dialog.Rules(user);
 
             Score score = new Score(0);
             user.UserScore(score);
 
             
         }
-        public void QuestionCicle(Score score, User user, Dialog dialog, Question[] QuestionList)
+        public void QuestionCicle(Score score, User user, Question[] QuestionList)
         {
             int i = 0;
 
@@ -52,7 +52,7 @@ namespace Homework6
                     break;
                 }
                 user.UserScore(score);
-                dialog.AskAboutContinue();
+                Dialog.AskAboutContinue();
                 string InputSign = user.UserInputSign();
                 if (InputSign == "+")
                 {
@@ -68,7 +68,7 @@ namespace Homework6
 
             }
         }
-        public void Finish()
+        public static void Finish()
         {
             Console.WriteLine("Спасибо за участие!");
             Console.WriteLine("Игра завершена.");

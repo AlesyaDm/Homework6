@@ -8,6 +8,7 @@ namespace Homework6
     {
         public CorrectAnswer (string AnswerText) : base(AnswerText)
         {
+            
         }
         public override void Choose()
         {

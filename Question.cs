@@ -6,6 +6,7 @@ namespace Homework6
 {
     class Question
     {
+
         public string QuestionText;
         public Answer[] Answers;
 
