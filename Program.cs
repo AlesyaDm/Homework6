@@ -97,12 +97,15 @@ namespace Homework6
             QuestionList[9] = question10;
             QuestionList[10] = question11;
 
-            Game game = new Game();
+            Game game = new Game("оав");
             Score score = new Score(0);
             User user = new User();
-                      
-            game.Start();
-            game.QuestionCicle(score, user, QuestionList);
+            Question question = new Question();
+            
+
+
+            game.Start(user, score, question);
+            game.QuestionCicle(score, user, QuestionList, question);
             Game.Finish();
         }
                 

@@ -9,6 +9,7 @@ namespace Homework6
 
         public string QuestionText;
         public Answer[] Answers;
+        public int QuestionNumber; 
 
         public void ShowQuestion()
         {
