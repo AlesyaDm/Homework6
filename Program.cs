@@ -6,56 +6,56 @@ namespace Homework6
     {
         static void Main(string[] args)
         {
-            Question question1 = new Question();
+            Question question1 = new Question(1);
             question1.QuestionText = "Дважды два";
             question1.Answers = new Answer[4];
             question1.Answers[0] = new WrongAnswer("1. 1");
             question1.Answers[1] = new WrongAnswer("2. 2");
             question1.Answers[2] = new WrongAnswer("3. 3");
             question1.Answers[3] = new CorrectAnswer("4. 4");
-            Question question2 = new Question();
+            Question question2 = new Question(2);
             question2.QuestionText = "Столица Беларуси";
             question2.Answers = new Answer[4];
             question2.Answers[0] = new WrongAnswer("1. Лондон");
             question2.Answers[1] = new CorrectAnswer("2. Минск");
             question2.Answers[2] = new WrongAnswer("3. Токио");
             question2.Answers[3] = new WrongAnswer("4. Москва");
-            Question question3 = new Question();
+            Question question3 = new Question(3);
             question3.QuestionText = "Рожденный ползать летать не...";
             question3.Answers = new Answer[4];
             question3.Answers[0] = new CorrectAnswer("1. может");
             question3.Answers[1] = new WrongAnswer("2. хочет");
             question3.Answers[2] = new WrongAnswer("3. будет");
             question3.Answers[3] = new WrongAnswer("4. любит");
-            Question question4 = new Question();
+            Question question4 = new Question(4);
             question4.QuestionText = "Кого приобретает человек, который толком ничего о покупке не знает?";
             question4.Answers = new Answer[4];
             question4.Answers[0] = new WrongAnswer("1. Тигра в клетке");
             question4.Answers[1] = new CorrectAnswer("2. Кота в мешке");
             question4.Answers[2] = new WrongAnswer("3. Пса в будке");
             question4.Answers[3] = new WrongAnswer("4. Карася в аквариуме");
-            Question question5 = new Question();
+            Question question5 = new Question(5);
             question5.QuestionText = "Что необходимо для прогулки на гондоле?";
             question5.Answers = new Answer[4];
             question5.Answers[0] = new WrongAnswer("1. Крылья");
             question5.Answers[1] = new WrongAnswer("2. Бензин");
             question5.Answers[2] = new WrongAnswer("3. Педали");
             question5.Answers[3] = new CorrectAnswer("4. Весло");
-            Question question6 = new Question();
+            Question question6 = new Question(6);
             question6.QuestionText = "Как звали космического пирата из книги Кира Булычева?";
             question6.Answers = new Answer[4];
             question6.Answers[0] = new WrongAnswer("1. Кот");
             question6.Answers[1] = new WrongAnswer("2. Свин");
             question6.Answers[2] = new CorrectAnswer("3. Крыс");
             question6.Answers[3] = new WrongAnswer("4. Ворон");
-            Question question7 = new Question();
+            Question question7 = new Question(7);
             question7.QuestionText = "Чем подают сигналы судьи во время конкура?";
             question7.Answers = new Answer[4];
             question7.Answers[0] = new WrongAnswer("1. Свистком");
             question7.Answers[1] = new WrongAnswer("2. Сиреной");
             question7.Answers[2] = new CorrectAnswer("3. Колоколом");
             question7.Answers[3] = new WrongAnswer("4. Пистолетом");
-            Question question8 = new Question();
+            Question question8 = new Question(8);
             question8.QuestionText = "Исследование чего принесло трем ученым Нобелевскую премию " +
                 "по физиологии и медицине за 2017 год?";
             question8.Answers = new Answer[4];
@@ -63,21 +63,21 @@ namespace Homework6
             question8.Answers[1] = new CorrectAnswer("2. Циркадных ритмов");
             question8.Answers[2] = new WrongAnswer("3. Циркониевых зубных протезов");
             question8.Answers[3] = new WrongAnswer("4. Песен цикад");
-            Question question9 = new Question();
+            Question question9 = new Question(9);
             question9.QuestionText = "Кого или что изучает герпетолог?";
             question9.Answers = new Answer[4];
             question9.Answers[0] = new WrongAnswer("1. Бабочек");
             question9.Answers[1] = new WrongAnswer("2. Лекарственные травы");
             question9.Answers[2] = new CorrectAnswer("3. Черепах");
             question9.Answers[3] = new WrongAnswer("4. Герпес");
-            Question question10 = new Question();
+            Question question10 = new Question(10);
             question10.QuestionText = "Чья фамилия стала названием блюда карпаччо?";
             question10.Answers = new Answer[4];
             question10.Answers[0] = new CorrectAnswer("1. Художника");
             question10.Answers[1] = new WrongAnswer("2. Повара");
             question10.Answers[2] = new WrongAnswer("3. Врача");
             question10.Answers[3] = new WrongAnswer("4. Космонавта");
-            Question question11 = new Question();
+            Question question11 = new Question(11);
             question11.QuestionText = "Какая страна не омывается морем?";
             question11.Answers = new Answer[4];
             question11.Answers[0] = new WrongAnswer("1. Албания");
@@ -97,14 +97,13 @@ namespace Homework6
             QuestionList[9] = question10;
             QuestionList[10] = question11;
 
-            Game game = new Game("оав");
-            Score score = new Score(0);
+            Game game = new Game();
+            Score score = new Score(50);
             User user = new User();
-            Question question = new Question();
-            
+            Question question = new Question(1);
 
 
-            game.Start(user, score, question);
+            game.Start(score, question, user);
             game.QuestionCicle(score, user, QuestionList, question);
             Game.Finish();
         }

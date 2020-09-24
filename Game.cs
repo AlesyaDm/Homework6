@@ -7,16 +7,15 @@ namespace Homework6
 {
     class Game
     {
-        public void Start(User user, Score score, Question question)
+        public void Start(Score score, Question question, User user)
         {
             Dialog.Start();
-            string InputSign = user.UserInputSign();
-            if (InputSign == "+")
+            user.InputSign = User.UserInputSign();
+            if (user.InputSign == "-")
             {
-               
-                Load("F:/SaveVisualStudio/game.txt", score, question);
+               Load("F:/SaveVisualStudio/game.txt", score, question);
             }
-            if (InputSign == "-")
+            if (user.InputSign == "+")
             {
                 NewGame(score);
             }
@@ -26,30 +25,24 @@ namespace Homework6
         {
 
             User user = new User();
-            user.UserName = user.UserInputName("Введите свое имя: ");
+            user.UserName = User.UserInputName("Введите свое имя: ");
             Dialog.Rules(user);
-            user.UserScore(score);
+            Console.WriteLine("Текущий счет: 0 BYN");
          }
         public void QuestionCicle(Score score, User user, Question[] QuestionList, Question question)
         {
            
-            while (question.QuestionNumber < QuestionList.Length)
+            while (question.QuestionNumber <= QuestionList.Length)
             {
-                QuestionList[question.QuestionNumber].ShowQuestion();
-                Console.WriteLine("");
-                Console.WriteLine("Варианты ответа:");
-                foreach (Answer value in QuestionList[question.QuestionNumber].Answers)
-                {
-                    value.ShowAnswers();
-                }
-                user.InputNumber = user.UserInputNumber("Введите номер правильного ответа:");
-                Answer UserChoose = QuestionList[question.QuestionNumber].Answers[user.InputNumber - 1];
+                AskQuestion(QuestionList, question);
+                user.InputNumber = User.UserInputNumber("Введите номер правильного ответа:");
+                Answer UserChoose = QuestionList[question.QuestionNumber-1].Answers[user.InputNumber - 1];
                 UserChoose.Choose();
                 if (UserChoose is CorrectAnswer)                {
 
                     score.TotalScore = score.TotalScore * 2;
                     question.QuestionNumber++;
-                    if (question.QuestionNumber == QuestionList.Length)
+                    if (question.QuestionNumber > QuestionList.Length)
                     {
                         Console.WriteLine("Поздравляем! Вы ответили на все вопросы и выиграли главный приз: 100000 BYN!");
                         break;
@@ -60,19 +53,19 @@ namespace Homework6
                     Console.WriteLine("Ваш выигрыш: 0 BYN.");
                     break;
                 }
-                user.UserScore(score);
+                User.UserScore(score);
                 Dialog.AskAboutContinue();
-                string InputSign = user.UserInputSign();
-                if (InputSign == "+")
+                user.InputSign = User.UserInputSign();
+                if (user.InputSign == "+")
                 {
 
                 }
-                if (InputSign == "-")
+                if (user.InputSign == "-")
                 {
                     Console.WriteLine("Ваш выигрыш: " + score.TotalScore + " BYN");
                     break;
                  }
-                if (InputSign == "*")
+                if (user.InputSign == "*")
                 {
                     Save("F:/SaveVisualStudio/game.txt", score, question);
                     break;
@@ -89,11 +82,18 @@ namespace Homework6
                 myFile.Delete();
             }
             FileStream myFileStream = myFile.OpenWrite();
-            StreamWriter myStreamWriter = new StreamWriter(myFileStream, Encoding.UTF8);
-            myStreamWriter.WriteLine(score.TotalScore);
-            myStreamWriter.WriteLine(question.QuestionNumber + 1);
-            myStreamWriter.Flush();
-            myStreamWriter.Close();
+            using (StreamWriter myStreamWriter = new StreamWriter(myFileStream, Encoding.UTF8))
+            {
+                try
+                {
+                    myStreamWriter.WriteLine(score.TotalScore);
+                    myStreamWriter.WriteLine(question.QuestionNumber + 1);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
         private void Load(string filepath, Score score, Question question)
         {
@@ -103,15 +103,34 @@ namespace Homework6
                 throw new FileNotFoundException(filepath);
             }
             FileStream myFileStream = myFile.OpenRead();
-            StreamReader myStreamReader = new StreamReader(myFileStream, Encoding.UTF8);
-            score.TotalScore = int.Parse(myStreamReader.ReadLine());
-            question.QuestionNumber = int.Parse(myStreamReader.ReadLine());
-            myStreamReader.Close();
+            using (StreamReader myStreamReader = new StreamReader(myFileStream, Encoding.UTF8))
+            {
+                try
+                {
+                    score.TotalScore = int.Parse(myStreamReader.ReadLine());
+                    question.QuestionNumber = int.Parse(myStreamReader.ReadLine());
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+                       
          }
         public static void Finish()
         {
             Console.WriteLine("Спасибо за участие!");
             Console.WriteLine("Игра завершена.");
+        }
+        private static void AskQuestion(Question[] QuestionList, Question question)
+        {
+            QuestionList[question.QuestionNumber-1].ShowQuestion();
+            Console.WriteLine("");
+            Console.WriteLine("Варианты ответа:");
+            foreach (Answer value in QuestionList[question.QuestionNumber-1].Answers)
+            {
+                value.ShowAnswers();
+            }
         }
 
     }

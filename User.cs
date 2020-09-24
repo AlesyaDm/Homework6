@@ -8,18 +8,18 @@ namespace Homework6
     {
         public string UserName;
         public int InputNumber;
-        
-        public void UserScore(Score score)
+        public string InputSign;
+        public static void UserScore(Score score)
         {
            Console.WriteLine("Текущий счет: " + score.TotalScore + " BYN");
         }
-        public string UserInputName(string text)
+        public static string UserInputName(string text)
         {
             Console.WriteLine(text);
             string UserName = Console.ReadLine();
             return UserName;
         }
-        public int UserInputNumber(string text)
+        public static int UserInputNumber(string text)
         {
             Console.WriteLine(text);
             string number = Console.ReadLine();
@@ -42,10 +42,10 @@ namespace Homework6
                 return UserInputNumber(text);
             }
         }
-        public string UserInputSign()
+        public static string UserInputSign()
             {
                 string InputSign = Console.ReadLine();
-            if (InputSign == "+" || InputSign == "-")
+            if (InputSign == "+" || InputSign == "-" || InputSign == "*")
             {
                 return InputSign;
             }

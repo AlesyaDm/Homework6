@@ -6,7 +6,10 @@ namespace Homework6
 {
     class Question
     {
-
+        public Question(int number)
+        {
+            this.QuestionNumber = number;
+        }
         public string QuestionText;
         public Answer[] Answers;
         public int QuestionNumber; 

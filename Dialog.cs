@@ -9,7 +9,11 @@ namespace Homework6
         public static void Start()
         {
             Console.WriteLine("Добро пожаловать в игру \"Кто хочет стать миллионером\"!");
+            Console.WriteLine("");
+            Console.WriteLine("Введите +, если хотите начать новую игру.");
+            Console.WriteLine("Введите -, если хотите загрузить сохраненную игру.");           
         }
+        
 
         public static void Rules(User user)
         {
@@ -21,9 +25,10 @@ namespace Homework6
         public static void AskAboutContinue()
         {
             Console.WriteLine("");
-            Console.WriteLine("Вы  можете забрать деньги сейчас или продолжить игру.");
+            Console.WriteLine("Вы  можете забрать деньги сейчас, продолжить игру или сохранить игру.");
             Console.WriteLine("Введите +, если хотите продолжить игру.");
             Console.WriteLine("Введите -, если хотите забрать выигрыш и завершить игру.");
+            Console.WriteLine("Введите *, если хотите сохранить игру.");
         }
         
     }
